@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.stockhub.trader</groupId>
-    <artifactId>StockTrading</artifactId>
+    <groupId>com.trader</groupId>
+    <artifactId>StockHub</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>StockTrading</name>
+    <name>StockHub</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,9 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>
-                                com.stockhub.trader.stocktrading/com.stockhub.trader.stocktrading.HelloApplication
-                            </mainClass>
+                            <mainClass>com.trader.stockhub/com.trader.stockhub.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
