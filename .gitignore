@@ -53,4 +53,6 @@ CSS/.cache/
 *.swp
 .gradio
 
+chat-service
+
 tempCodeRunnerFile.py

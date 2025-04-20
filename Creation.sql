@@ -2,6 +2,16 @@
 CREATE DATABASE IF NOT EXISTS StockTradingDB2;
 USE StockTradingDB;
 
+CREATE TABLE ChatHistory (
+    Chat_ID      BIGINT        AUTO_INCREMENT PRIMARY KEY,
+    User_ID      INT           NOT NULL,
+    Prompt       TEXT          NOT NULL,
+    Response     TEXT          NOT NULL,
+    Asked_At     TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_chat_user FOREIGN KEY (User_ID)
+        REFERENCES User(User_ID) ON DELETE CASCADE
+);
+
 -- 1. User Table
 CREATE TABLE User (
     User_ID INT PRIMARY KEY,

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.faheemtrading.controller.ChatController"
+            stylesheets="@../css/chat.css">
+
+    <center>
+        <ListView fx:id="chatList" />
+    </center>
+
+    <bottom>
+        <HBox spacing="8">
+            <!-- proper Insets element so no coercion error -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- grows to fill space -->
+            <TextField fx:id="inputField" HBox.hgrow="ALWAYS"
+                       promptText="Ask something…"/>
+
+            <Button text="Send" onAction="#sendMessage"/>
+        </HBox>
+    </bottom>
+</BorderPane>

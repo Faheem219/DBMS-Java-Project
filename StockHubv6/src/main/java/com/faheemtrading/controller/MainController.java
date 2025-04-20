@@ -23,7 +23,7 @@ public class MainController {
     @FXML private void showTrades()      { loadView("/fxml/trade.fxml"); }
     @FXML private void showWatchlists(){ loadView("/fxml/watchlist.fxml"); }
     @FXML private void showAlerts(){ loadView("/fxml/alerts.fxml"); }
-
+    @FXML private void showChat()  { loadView("/fxml/chat.fxml"); }
 
     @FXML
     private void logout() {

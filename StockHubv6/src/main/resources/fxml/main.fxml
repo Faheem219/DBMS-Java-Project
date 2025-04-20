@@ -12,9 +12,10 @@
             <Label text="☰" styleClass="brand"/>
             <Button text="🏠 Dashboard"  onAction="#showDashboard"  styleClass="nav-btn"/>
             <Button text="📁 Portfolios" onAction="#showPortfolios" styleClass="nav-btn"/>
-            <Button text="💹 Trades"     onAction="#showTrades"     styleClass="nav-btn"/>
+<!--            <Button text="💹 Trades"     onAction="#showTrades"     styleClass="nav-btn"/>-->
             <Button text="👁 Watchlists" onAction="#showWatchlists" styleClass="nav-btn"/>
             <Button text="🔔 Alerts" onAction="#showAlerts" styleClass="nav-btn"/>
+            <Button text="🤖 Chatbot" onAction="#showChat" styleClass="nav-btn"/>
             <Button text="🚪 Logout"     onAction="#logout"         styleClass="nav-btn"/>
 
 <!--            <BorderPane>-->
