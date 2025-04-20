@@ -17,7 +17,7 @@ public class AuthService {
 
     public boolean register(String name, String email, String password) {
         if (dao.emailExists(email)) return false;
-        int nextId = dao.getAll().size() + 1;      // simplistic id strategy
+        int nextId = dao.getAll().size() + 10;      // simplistic id strategy
         User u = new User(nextId, name, email, password, LocalDate.now());
         return dao.insert(u);
     }

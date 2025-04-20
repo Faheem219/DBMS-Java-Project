@@ -15,7 +15,7 @@
             <Tab text="ROI Trend">
                 <LineChart fx:id="roiChart" createSymbols="false">
                     <xAxis><CategoryAxis label="Date"/></xAxis>
-                    <yAxis><NumberAxis label="ROI (%)"/></yAxis>
+                    <yAxis><NumberAxis label="ROI(%)"/></yAxis>
                 </LineChart>
             </Tab>
         </tabs>

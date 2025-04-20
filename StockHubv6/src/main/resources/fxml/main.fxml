@@ -11,6 +11,7 @@
 <!--            <ToggleButton fx:id="toggleBtn" text="☰" onAction="#toggleSidebar" styleClass="brand"/>-->
             <Label text="☰" styleClass="brand"/>
             <Button text="🏠 Dashboard"  onAction="#showDashboard"  styleClass="nav-btn"/>
+            <Button text="👤  Profile" onAction="#showProfile" styleClass="nav-btn"/>
             <Button text="📁 Portfolios" onAction="#showPortfolios" styleClass="nav-btn"/>
 <!--            <Button text="💹 Trades"     onAction="#showTrades"     styleClass="nav-btn"/>-->
             <Button text="👁 Watchlists" onAction="#showWatchlists" styleClass="nav-btn"/>

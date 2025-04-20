@@ -147,7 +147,7 @@ TextField:focused, PasswordField:focused, ChoiceBox:focused, DatePicker:focused 
 
 Button {
     -fx-background-radius: 10;
-    -fx-text-fill:         #ffffff;
+    -fx-text-fill:         black;
     -fx-font-weight:       600;
     -fx-effect:            dropshadow(gaussian, rgba(0,0,0,0.28), 12, 0, 0, 3);
     -fx-pref-height:       38;

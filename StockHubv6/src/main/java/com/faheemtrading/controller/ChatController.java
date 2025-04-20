@@ -51,14 +51,14 @@ public class ChatController {
         if (prompt.isEmpty()) return;
 
         int uid = Session.getUser().getUserId();
-        chatList.getItems().add(new Message(prompt, false)); // prompt on left
+        chatList.getItems().add(new Message(prompt, true)); // prompt on left
         inputField.clear();
 
         new Thread(() -> {
             try {
                 String reply = ChatService.ask(uid, prompt);
                 Platform.runLater(() ->
-                        chatList.getItems().add(new Message(reply, true)));
+                        chatList.getItems().add(new Message(reply, false)));
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Platform.runLater(() ->

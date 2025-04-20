@@ -18,4 +18,6 @@ public class WatchlistService {
         return dao.insert(w);
     }
     public boolean delete(int wid){ return dao.delete(wid); }
+
+    public boolean update(Watchlist w){ return dao.update(w); }
 }

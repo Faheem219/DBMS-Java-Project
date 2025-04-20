@@ -24,6 +24,7 @@ public class MainController {
     @FXML private void showWatchlists(){ loadView("/fxml/watchlist.fxml"); }
     @FXML private void showAlerts(){ loadView("/fxml/alerts.fxml"); }
     @FXML private void showChat()  { loadView("/fxml/chat.fxml"); }
+    @FXML private void showProfile() { loadView("/fxml/profile.fxml"); }
 
     @FXML
     private void logout() {

@@ -63,7 +63,21 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean update(User u) { /* not used right now */ return false; }
+    public boolean update(User u) {
+        String sql = """
+        UPDATE User
+           SET Password=?,
+               Contact_Info=?,
+               Annual_Income=?
+         WHERE User_ID=?""";
+        try (PreparedStatement ps = DBUtil.getConnection().prepareStatement(sql)) {
+            ps.setString (1, u.getPassword());
+            ps.setString (2, u.getContactInfo());
+            ps.setBigDecimal(3, u.getAnnualIncome());
+            ps.setInt    (4, u.getUserId());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) { e.printStackTrace(); return false; }
+    }
 
     @Override
     public boolean delete(Integer id) { /* not used now */ return false; }
@@ -75,7 +89,9 @@ public class UserDAOImpl implements UserDAO {
                 rs.getString("Name"),
                 rs.getString("Email"),
                 rs.getString("Password"),
-                rs.getDate("Created_Date").toLocalDate()
+                rs.getDate("Created_Date").toLocalDate(),
+                rs.getString("Contact_Info"),
+                rs.getBigDecimal("Annual_Income")
         );
     }
 }

@@ -1,0 +1,9 @@
+@import "app.css";
+
+.grid-pane > Label {
+    -fx-font-weight: 600;
+}
+
+Button {
+    -fx-min-width: 100;
+}

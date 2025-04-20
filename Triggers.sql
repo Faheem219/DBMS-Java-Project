@@ -1,4 +1,4 @@
-USE StockTradingDB2;
+USE StockTradingDB;
 
 CREATE TABLE IF NOT EXISTS Trigger_Log (
     Log_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,6 +24,23 @@ BEGIN
     INSERT INTO Trigger_Log (Trigger_Name, Message)
     VALUES ('trg_after_trade_insert', CONCAT('Inserted trade for Portfolio_ID ', NEW.Portfolio_ID, 
           ': added ', (NEW.Price * NEW.Trade_Qty), ' to Total_Value.'));
+END;
+//
+
+CREATE TRIGGER trg_after_buy_trade_insert
+AFTER INSERT ON Buy_Trade
+FOR EACH ROW
+BEGIN
+    -- Update the Portfolio total value when a Buy trade is inserted
+    UPDATE Portfolio 
+    SET Total_Value = Total_Value + (NEW.Broker_Fee + NEW.Trade_Qty * (SELECT Price FROM Stock WHERE Stock_ID = NEW.Stock_ID))
+    WHERE Portfolio_ID = (SELECT Portfolio_ID FROM Trade WHERE Trade_ID = NEW.Trade_ID);
+    
+    -- Insert logging entry for Buy trade
+    INSERT INTO Trigger_Log (Trigger_Name, Message)
+    VALUES ('trg_after_buy_trade_insert', CONCAT('Inserted Buy trade for Portfolio_ID ', 
+          (SELECT Portfolio_ID FROM Trade WHERE Trade_ID = NEW.Trade_ID), ': added ', 
+          (NEW.Broker_Fee + NEW.Trade_Qty * (SELECT Price FROM Stock WHERE Stock_ID = NEW.Stock_ID)), ' to Total_Value.'));
 END;
 //
 

@@ -53,7 +53,22 @@ public class WatchlistDAOImpl implements WatchlistDAO {
         }catch(Exception e){e.printStackTrace();return false;}
     }
 
-    @Override public boolean update(Watchlist w){ return false; }
+    @Override
+    public boolean update(Watchlist w) {
+        String sql = """
+        UPDATE Watchlist
+           SET Watchlist_Name=?,
+               Notes=?,
+               Stock_ID=?
+         WHERE Watchlist_ID=?""";
+        try (PreparedStatement ps = DBUtil.getConnection().prepareStatement(sql)) {
+            ps.setString(1, w.getName());
+            ps.setString(2, w.getNotes());
+            ps.setInt   (3, w.getStockId());
+            ps.setInt   (4, w.getWatchlistId());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) { e.printStackTrace(); return false; }
+    }
 
     @Override
     public boolean delete(Integer id){
