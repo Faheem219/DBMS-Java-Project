@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.trader.stockhubv4.controller.LoginController"
+            stylesheets="@../css/login.css">
+    <children>
+        <VBox alignment="CENTER" spacing="10.0" AnchorPane.topAnchor="0"
+              AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <Label text="StockHub v4" styleClass="title-label"/>
+            <TextField fx:id="emailField" promptText="Email" maxWidth="250"/>
+            <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
+            <Button text="Login" onAction="#onLoginClicked" maxWidth="100"/>
+        </VBox>
+    </children>
+</AnchorPane>

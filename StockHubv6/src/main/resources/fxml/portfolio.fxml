@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.PortfolioController"
+      spacing="10" styleClass="page">
+    <HBox spacing="10">
+        <TextField fx:id="pfNameField" promptText="New Portfolio Name"/>
+        <Button text="Create" onAction="#createPortfolio"/>
+    </HBox>
+
+    <TableView fx:id="pfTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId"   text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colName" text="Name" />
+            <TableColumn fx:id="colVal"  text="Total Value"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Delete" onAction="#deleteSelected"/>
+        <Button text="Open Trades" onAction="#openTrades"/>
+        <Button text="Export CSV" onAction="#exportCsv"/>
+        <Button text="Export PDF" onAction="#exportPdf"/>
+    </HBox>
+</VBox>

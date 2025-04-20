@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.LoginController"
+            stylesheets="@../css/form.css">
+    <center>
+        <VBox alignment="CENTER" spacing="14" styleClass="card">
+            <Label text="Login" styleClass="title"/>
+            <TextField fx:id="emailField" promptText="Email"/>
+            <PasswordField fx:id="passwordField" promptText="Password"/>
+            <HBox spacing="10">
+                <Button text="Login" onAction="#onLogin"/>
+                <Button text="Register" onAction="#openRegister"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

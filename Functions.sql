@@ -1,4 +1,4 @@
-USE StockTradingDB;
+USE StockTradingDB2;
 
 DELIMITER //
 

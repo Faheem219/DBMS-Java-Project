@@ -2,19 +2,26 @@ package com.trader.stockhub.controllers;
 
 import com.trader.stockhub.base.BaseController;
 import com.trader.stockhub.dbms.DBConnection;
+import com.trader.stockhub.util.Session;
 import com.trader.stockhub.util.ExportUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class DashboardController extends BaseController {
 
@@ -24,53 +31,68 @@ public class DashboardController extends BaseController {
     @FXML
     private LineChart<Number, Number> performanceLineChart;
 
-    // Called automatically when the FXML is loaded.
     @FXML
     public void initialize() {
+        // Use Session to fetch data for the currently logged-in user.
         loadAssetDistribution();
         loadPerformanceData();
     }
 
-    // Loads portfolio data into the asset distribution pie chart.
+    // Loads portfolio data for the current user into the asset distribution PieChart.
     private void loadAssetDistribution() {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        String query = "SELECT Portfolio_Name, Total_Value FROM Portfolio";
+        int currentUserId = Session.getInstance().getCurrentUserId();
+        String query = "SELECT Portfolio_Name, Total_Value FROM Portfolio WHERE User_ID = ?";
         try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
-            while(rs.next()){
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, currentUserId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
                 String name = rs.getString("Portfolio_Name");
                 double value = rs.getDouble("Total_Value");
                 pieChartData.add(new PieChart.Data(name, value));
             }
             assetPieChart.setData(pieChartData);
-        } catch(SQLException | ClassNotFoundException e){
+        } catch (SQLException | ClassNotFoundException e) {
             showError("Error loading asset distribution: " + e.getMessage());
         }
     }
 
-    // Loads a simple performance data set into the line chart.
+    // Loads performance data (line chart) for the current user's portfolios.
+    // We use the Creation_Date to calculate an x-axis value (days offset from the first portfolio's date).
     private void loadPerformanceData() {
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName("Portfolio Performance");
-        // Simple simulation: use Portfolio_ID as time axis, Total_Value as the Y value.
-        String query = "SELECT Portfolio_ID, Total_Value FROM Portfolio ORDER BY Portfolio_ID";
+        int currentUserId = Session.getInstance().getCurrentUserId();
+        String query = "SELECT Creation_Date, Total_Value FROM Portfolio WHERE User_ID = ? ORDER BY Creation_Date";
         try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
-            int time = 1;
-            while(rs.next()){
-                double value = rs.getDouble("Total_Value");
-                series.getData().add(new XYChart.Data<>(time++, value));
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, currentUserId);
+            ResultSet rs = ps.executeQuery();
+
+            LocalDate baseDate = null;
+            int pointIndex = 0;
+            while (rs.next()) {
+                String dateStr = rs.getString("Creation_Date");
+                double totalValue = rs.getDouble("Total_Value");
+                LocalDate currentDate = LocalDate.parse(dateStr);
+                if (baseDate == null) {
+                    baseDate = currentDate;
+                }
+                // Compute offset days from base date.
+                long daysOffset = ChronoUnit.DAYS.between(baseDate, currentDate);
+                // If no variation (e.g., only one portfolio), we use the index as an alternative.
+                series.getData().add(new XYChart.Data<>((daysOffset == 0 ? pointIndex : daysOffset), totalValue));
+                pointIndex++;
             }
             performanceLineChart.getData().clear();
             performanceLineChart.getData().add(series);
-        } catch(SQLException | ClassNotFoundException e){
+        } catch (SQLException | ClassNotFoundException e) {
             showError("Error loading performance data: " + e.getMessage());
         }
     }
 
-    // Refreshes the data in both charts.
+    // Refreshes dashboard charts.
     @FXML
     public void handleRefresh(ActionEvent event) {
         assetPieChart.getData().clear();
@@ -79,15 +101,26 @@ public class DashboardController extends BaseController {
         loadPerformanceData();
     }
 
-    // Sample navigation handlers.
+    // Navigation handler: If Dashboard button is clicked.
     @FXML
     public void handleDashboard(ActionEvent event) {
         showInfo("You are already on the Dashboard.");
     }
 
+    // Navigation handler: Load the Portfolio Management screen.
     @FXML
     public void handlePortfolio(ActionEvent event) {
-        showInfo("Portfolio Management screen is under development.");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PortfolioManagement.fxml"));
+            Parent portfolioRoot = loader.load();
+            Scene portfolioScene = new Scene(portfolioRoot);
+            portfolioScene.getStylesheets().add(getClass().getResource("/css/portfolio.css").toExternalForm());
+            Stage stage = (Stage) assetPieChart.getScene().getWindow();
+            stage.setScene(portfolioScene);
+            stage.setTitle("Portfolio Management");
+        } catch (Exception e) {
+            showError("Error loading Portfolio Management screen: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -97,8 +130,8 @@ public class DashboardController extends BaseController {
 
     @FXML
     public void handleExport(ActionEvent event) {
-        ExportUtil exportUtil = new ExportUtil(); // Using polymorphism via the Exportable interface.
-        if(exportUtil.exportData()){
+        ExportUtil exportUtil = new ExportUtil();
+        if (exportUtil.exportData()) {
             showInfo("Portfolio data exported successfully to 'portfolio_export.csv'.");
         } else {
             showError("Export failed.");

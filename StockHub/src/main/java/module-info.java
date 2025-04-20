@@ -9,6 +9,7 @@ module com.trader.stockhub {
     exports com.trader.stockhub.dbms;
     exports com.trader.stockhub.util;
     exports com.trader.stockhub.interfaces;
+    exports com.trader.stockhub.models;
 
     opens com.trader.stockhub to javafx.fxml;
     opens com.trader.stockhub.controllers to javafx.fxml;

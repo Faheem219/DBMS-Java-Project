@@ -1,5 +1,5 @@
 -- Use the database
-USE StockTradingDB;
+USE StockTradingDB2;
 
 -----------------------------------------------------------
 -- Insertion code for each table with sample data

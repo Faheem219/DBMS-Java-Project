@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.trader.stockhubv4.controller.DashboardController"
+            stylesheets="@../css/style.css">
+
+    <!-- Title -->
+    <Label text="Dashboard" styleClass="title-label" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="20"/>
+
+    <!-- Charts -->
+    <HBox spacing="20" AnchorPane.topAnchor="60" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+        <PieChart fx:id="pieChartAssets" prefWidth="400" prefHeight="300" title="Asset Distribution"/>
+        <BarChart fx:id="barChartTrades" prefWidth="400" prefHeight="300" title="Trades per Month">
+            <xAxis>
+                <CategoryAxis label="Month"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Number of Trades"/>
+            </yAxis>
+        </BarChart>
+    </HBox>
+
+    <!-- Export buttons -->
+    <HBox spacing="10" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="20">
+        <Button text="Export Portfolios CSV" onAction="#onExportCsv"/>
+        <Button text="Export Portfolios PDF" onAction="#onExportPdf"/>
+    </HBox>
+</AnchorPane>

@@ -1,0 +1,18 @@
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.text-field, .password-field {
+    -fx-pref-width: 250px;
+}
+
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+}
+
+.error {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+}

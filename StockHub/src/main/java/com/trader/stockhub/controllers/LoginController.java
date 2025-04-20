@@ -2,6 +2,7 @@ package com.trader.stockhub.controllers;
 
 import com.trader.stockhub.dbms.DBConnection;
 import com.trader.stockhub.base.BaseController;
+import com.trader.stockhub.util.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -39,7 +40,15 @@ public class LoginController extends BaseController {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
-                // Successful login. Load Dashboard.
+                // Retrieve logged in user's ID and name
+                int userId = rs.getInt("User_ID");
+                String userName = rs.getString("Name");
+                // Store in the session so that other controllers know the logged in user.
+                Session session = Session.getInstance();
+                session.setCurrentUserId(userId);
+                session.setCurrentUserName(userName);
+
+                // Successful login. Load dashboard.
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Dashboard.fxml"));
                 Parent dashboardRoot = loader.load();
                 Scene dashboardScene = new Scene(dashboardRoot);

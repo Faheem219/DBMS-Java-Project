@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.faheemtrading.controller.MainController"
+            stylesheets="@../css/global.css">
+    <!-- Sidebar -->
+    <left>
+        <VBox fx:id="sidebar" maxWidth="200" styleClass="sidebar">
+            <children>
+                <Label text="Menu" styleClass="sidebar-title"/>
+                <Button text="Dashboard" onAction="#showDashboard" styleClass="side-btn"/>
+                <Button text="Portfolios" onAction="#showPortfolios" styleClass="side-btn"/>
+                <Button text="Trades" onAction="#showTrades" styleClass="side-btn"/>
+                <Button fx:id="alertsBtn" text="Alerts" onAction="#showAlerts" styleClass="side-btn">
+                    <graphic>
+                        <StackPane>
+                            <Label text="Alerts"/>
+                            <Label fx:id="badge" styleClass="badge"/>
+                        </StackPane>
+                    </graphic>
+                </Button>
+
+                <!-- More buttons (Trades, Reports…) will be added in Part 3 -->
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Logout" onAction="#logout" styleClass="logout-btn"/>
+            </children>
+            <padding><Insets top="15" left="10"/></padding>
+        </VBox>
+    </left>
+
+    <!-- Centre content area -->
+    <center>
+        <StackPane fx:id="contentPane"/>
+    </center>
+</BorderPane>

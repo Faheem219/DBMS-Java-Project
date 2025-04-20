@@ -1,5 +1,5 @@
 -- Create the database and use it
-CREATE DATABASE IF NOT EXISTS StockTradingDB;
+CREATE DATABASE IF NOT EXISTS StockTradingDB2;
 USE StockTradingDB;
 
 -- 1. User Table

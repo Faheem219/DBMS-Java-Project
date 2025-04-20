@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.WatchlistController"
+      spacing="10" styleClass="page">
+    <HBox spacing="10">
+        <TextField fx:id="nameField" promptText="Watchlist name"/>
+        <TextField fx:id="notesField" promptText="Notes"/>
+        <ChoiceBox fx:id="stockChoice"/>
+        <Button text="Add" onAction="#addWatchlist"/>
+    </HBox>
+
+    <TableView fx:id="watchTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="wId"   text="ID" prefWidth="60"/>
+            <TableColumn fx:id="wName" text="Name"/>
+            <TableColumn fx:id="wStock" text="Stock"/>
+            <TableColumn fx:id="wNotes" text="Notes"/>
+            <TableColumn fx:id="wDate" text="Added"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Delete" onAction="#deleteSelected"/>
+        <Button text="Export CSV" onAction="#exportCsv"/>
+    </HBox>
+</VBox>

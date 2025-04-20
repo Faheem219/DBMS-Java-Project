@@ -1,0 +1,20 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #ecf0f1;
+}
+.table-view {
+    -fx-background-color: white;
+}
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.label {
+    -fx-font-size: 14px;
+}
+.text-field, .date-picker {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}

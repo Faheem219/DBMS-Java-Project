@@ -1,4 +1,4 @@
-USE StockTradingDB;
+USE StockTradingDB2;
 
 CREATE TABLE IF NOT EXISTS Trigger_Log (
     Log_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -83,7 +83,6 @@ END;
 
 -- Trigger 5: Update Account Balance When a Dividend is Inserted
 -- A dividend received for a stock held by a portfolio is credited to the user's account.
--- (This example assumes that the dividend’s effect is proportional to the shares held and that one account is linked per user.)
 CREATE TRIGGER trg_after_dividend_insert
 AFTER INSERT ON Dividend_History
 FOR EACH ROW

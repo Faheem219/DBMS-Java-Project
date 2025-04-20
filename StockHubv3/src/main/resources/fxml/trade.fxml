@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.faheemtrading.controller.TradeController"
+            stylesheets="@../css/trade.css">
+    <children>
+        <VBox spacing="12" padding="20" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+              AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <children>
+                        <Label text="Trades" styleClass="view-title"/>
+                        <ChoiceBox fx:id="filterChoice"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Export" onAction="#exportData" styleClass="primary-btn"/>
+                    </children>
+                </HBox>
+
+                <TableView fx:id="tradeTable" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="colId"   text="ID"    prefWidth="60"/>
+                        <TableColumn fx:id="colType" text="Type"  prefWidth="70"/>
+                        <TableColumn fx:id="colDate" text="Date"  prefWidth="110"/>
+                        <TableColumn fx:id="colQty"  text="Qty"   prefWidth="60"/>
+                        <TableColumn fx:id="colPrice" text="Price" prefWidth="80"/>
+                        <TableColumn fx:id="colValue" text="Value" prefWidth="100"/>
+                        <TableColumn fx:id="colStock" text="Stock" prefWidth="80"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10">
+                    <children>
+                        <Button text="Add" onAction="#addTrade" styleClass="primary-btn"/>
+                        <Button text="Edit" onAction="#editTrade" styleClass="primary-btn"/>
+                        <Button text="Delete" onAction="#deleteTrade" styleClass="danger-btn"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Refresh" onAction="#refresh" styleClass="side-btn"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

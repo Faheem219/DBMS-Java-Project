@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.stockapp.controller.MainController"
+            stylesheets="@../css/main.css">
+    <left>
+        <VBox spacing="10" styleClass="sidebar" prefWidth="160">
+            <Button text="Dashboard" onAction="#showDashboard"/>
+            <Button text="Portfolios" onAction="#showPortfolioView"/>
+            <Button text="Watchlist" onAction="#showWatchlistView"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout" onAction="#onLogout"/>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentPane" styleClass="content-pane"/>
+    </center>
+</BorderPane>
