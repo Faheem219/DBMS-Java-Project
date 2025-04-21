@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.MainController">
+    <!-- Sidebar -->
+    <left>
+        <VBox fx:id="sideBar" spacing="6" styleClass="sidebar">
+<!--            <ToggleButton fx:id="toggleBtn" text="☰" onAction="#toggleSidebar" styleClass="brand"/>-->
+            <Label text="☰" styleClass="brand"/>
+            <Button text="🏠 Dashboard"  onAction="#showDashboard"  styleClass="nav-btn"/>
+            <Button text="👤  Profile" onAction="#showProfile" styleClass="nav-btn"/>
+            <Button text="📁 Portfolios" onAction="#showPortfolios" styleClass="nav-btn"/>
+<!--            <Button text="💹 Trades"     onAction="#showTrades"     styleClass="nav-btn"/>-->
+            <Button text="👁 Watchlists" onAction="#showWatchlists" styleClass="nav-btn"/>
+            <Button text="🔔 Alerts" onAction="#showAlerts" styleClass="nav-btn"/>
+            <Button text="🤖 Chatbot" onAction="#showChat" styleClass="nav-btn"/>
+            <Button text="🚪 Logout"     onAction="#logout"         styleClass="nav-btn"/>
+
+<!--            <BorderPane>-->
+<!--                <bottom>-->
+<!--                    <HBox alignment="CENTER_LEFT" spacing="8">-->
+<!--                        <padding>-->
+<!--                            <Insets top="8" right="8" bottom="8" left="8"/>-->
+<!--                        </padding>-->
+<!--                        <ToggleButton fx:id="darkToggle" onAction="#toggleTheme">-->
+<!--                            <graphic>-->
+<!--                                <Label text="🌙" />-->
+<!--                            </graphic>-->
+<!--                        </ToggleButton>-->
+<!--                    </HBox>-->
+<!--                </bottom>-->
+<!--            </BorderPane>-->
+        </VBox>
+    </left>
+
+    <!-- Dynamic content -->
+    <center>
+        <StackPane fx:id="contentPane"/>
+    </center>
+
+<!--    <bottom>-->
+<!--        <HBox alignment="CENTER_LEFT" spacing="8">-->
+<!--            <padding>-->
+<!--                <Insets top="8" right="8" bottom="8" left="8"/>-->
+<!--            </padding>-->
+<!--            <ToggleButton fx:id="darkToggle" onAction="#toggleTheme">-->
+<!--                <graphic>-->
+<!--                    <Label text="🌙" />-->
+<!--                </graphic>-->
+<!--            </ToggleButton>-->
+<!--        </HBox>-->
+<!--    </bottom>-->
+</BorderPane>

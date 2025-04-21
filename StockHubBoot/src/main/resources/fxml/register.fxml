@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.RegisterController"
+            stylesheets="@../css/form.css">
+    <center>
+        <VBox alignment="CENTER" spacing="12" styleClass="card">
+            <Label text="Create Account" styleClass="title"/>
+            <TextField fx:id="nameField"  promptText="Full Name"/>
+            <TextField fx:id="emailField" promptText="Email"/>
+            <PasswordField fx:id="pwd1Field" promptText="Password"/>
+            <PasswordField fx:id="pwd2Field" promptText="Confirm Password"/>
+            <HBox spacing="10">
+                <Button text="Register" onAction="#onRegister"/>
+                <Button text="Back" onAction="#backToLogin"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

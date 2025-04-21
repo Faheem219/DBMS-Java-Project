@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.bootstrapfx.scene.layout.Panel?>
+
+<?import java.lang.String?>
+<TableView xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.AlertController"
+           fx:id="alertTable" styleClass="page">
+    <columns>
+        <TableColumn fx:id="aId" text="ID" prefWidth="60"/>
+        <TableColumn fx:id="aType" text="Type"/>
+        <TableColumn fx:id="aThr" text="Threshold"/>
+        <TableColumn fx:id="aTime" text="Time"/>
+        <TableColumn fx:id="aStock" text="Stock"/>
+    </columns>
+</TableView>

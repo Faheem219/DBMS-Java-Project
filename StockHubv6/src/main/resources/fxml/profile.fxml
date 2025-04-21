@@ -19,13 +19,13 @@
             <Label fx:id="emailLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
             <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <PasswordField fx:id="pwdField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <PasswordField fx:id="pwdField" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="form-control"/>
 
             <Label text="Contact Info:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <TextField fx:id="contactField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <TextField fx:id="contactField" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="form-control"/>
 
             <Label text="Annual Income:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-            <TextField fx:id="incomeField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <TextField fx:id="incomeField" GridPane.rowIndex="5" GridPane.columnIndex="1" styleClass="form-control"/>
 
             <Button text="Save" onAction="#save"
                     GridPane.rowIndex="6" GridPane.columnIndex="1"

@@ -9,15 +9,22 @@
     <left>
         <VBox fx:id="sideBar" spacing="6" styleClass="sidebar">
 <!--            <ToggleButton fx:id="toggleBtn" text="☰" onAction="#toggleSidebar" styleClass="brand"/>-->
-            <Label text="☰" styleClass="brand"/>
-            <Button text="🏠 Dashboard"  onAction="#showDashboard"  styleClass="nav-btn"/>
-            <Button text="👤  Profile" onAction="#showProfile" styleClass="nav-btn"/>
-            <Button text="📁 Portfolios" onAction="#showPortfolios" styleClass="nav-btn"/>
-<!--            <Button text="💹 Trades"     onAction="#showTrades"     styleClass="nav-btn"/>-->
-            <Button text="👁 Watchlists" onAction="#showWatchlists" styleClass="nav-btn"/>
-            <Button text="🔔 Alerts" onAction="#showAlerts" styleClass="nav-btn"/>
-            <Button text="🤖 Chatbot" onAction="#showChat" styleClass="nav-btn"/>
-            <Button text="🚪 Logout"     onAction="#logout"         styleClass="nav-btn"/>
+            <Label text="☰" styleClass="brand, h3"/>
+
+            <Button text="🏠 Dashboard"  onAction="#showDashboard"
+                    styleClass="btn-link, nav-btn"/>
+            <Button text="👤 Profile"    onAction="#showProfile"
+                    styleClass="btn-link, nav-btn"/>
+            <Button text="📁 Portfolios" onAction="#showPortfolios"
+                    styleClass="btn-link, nav-btn"/>
+            <Button text="👁 Watchlists" onAction="#showWatchlists"
+                    styleClass="btn-link, nav-btn"/>
+            <Button text="🔔 Alerts"     onAction="#showAlerts"
+                    styleClass="btn-link, nav-btn"/>
+            <Button text="🤖 Chatbot"    onAction="#showChat"
+                    styleClass="btn-link, nav-btn"/>
+            <Button text="🚪 Logout"     onAction="#logout"
+                    styleClass="btn-danger, btn-sm, nav-btn"/>
 
 <!--            <BorderPane>-->
 <!--                <bottom>-->

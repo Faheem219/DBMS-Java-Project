@@ -9,21 +9,19 @@
             stylesheets="@../css/chat.css">
 
     <center>
-        <ListView fx:id="chatList" />
+        <ListView fx:id="chatList" styleClass="list-group"/>
     </center>
 
     <bottom>
-        <HBox spacing="8">
-            <!-- proper Insets element so no coercion error -->
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
+        <HBox spacing="8" styleClass="p-3, bg-light">
+            <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
 
-            <!-- grows to fill space -->
-            <TextField fx:id="inputField" HBox.hgrow="ALWAYS"
-                       promptText="Ask something…"/>
+            <TextField fx:id="inputField" promptText="Ask something…"
+                       styleClass="form-control"
+                       HBox.hgrow="ALWAYS"/>
 
-            <Button text="Send" onAction="#sendMessage"/>
+            <Button text="Send" onAction="#sendMessage"
+                    styleClass="btn, btn-primary"/>
         </HBox>
     </bottom>
 </BorderPane>

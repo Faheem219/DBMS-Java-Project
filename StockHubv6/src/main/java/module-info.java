@@ -5,6 +5,7 @@ module com.faheemtrading.stockhubv6 {
     requires org.apache.pdfbox;
     requires com.fasterxml.jackson.databind;
     requires java.net.http;
+    requires org.kordamp.bootstrapfx.core;
 
     opens com.faheemtrading to javafx.fxml;
     opens com.faheemtrading.controller to javafx.fxml;

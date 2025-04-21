@@ -7,13 +7,14 @@
       spacing="10" styleClass="page">
     <Label fx:id="pfLabel" text="Portfolio:" styleClass="title"/>
     <HBox spacing="10">
-        <ChoiceBox fx:id="stockChoice"/>
-        <TextField fx:id="qtyField" promptText="Quantity"/>
-        <ChoiceBox fx:id="typeChoice"/>
-        <Button text="Execute Trade" onAction="#makeTrade"/>
+        <ChoiceBox fx:id="stockChoice"  styleClass="form-select"/>
+        <TextField fx:id="qtyField"     promptText="Quantity" styleClass="form-control"/>
+        <ChoiceBox fx:id="typeChoice"   styleClass="form-select"/>
+        <Button text="Execute Trade" onAction="#makeTrade"
+                styleClass="btn, btn-primary"/>
     </HBox>
 
-    <TableView fx:id="tradeTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="tradeTable" VBox.vgrow="ALWAYS" styleClass="table, table-striped">
         <columns>
             <TableColumn fx:id="tId"  text="Trade ID" prefWidth="80"/>
             <TableColumn fx:id="tStock" text="Stock"/>

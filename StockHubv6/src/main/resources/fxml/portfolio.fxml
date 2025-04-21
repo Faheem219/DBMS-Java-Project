@@ -3,26 +3,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.faheemtrading.controller.PortfolioController"
-      spacing="10" styleClass="page">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.faheemtrading.controller.PortfolioController"
+      spacing="16" styleClass="page">
+
     <HBox spacing="10">
-        <TextField fx:id="pfNameField" promptText="New Portfolio Name"/>
-        <Button text="Create" onAction="#createPortfolio"/>
+        <TextField fx:id="pfNameField" promptText="New Portfolio Name"
+                   styleClass="form-control"/>
+        <Button text="Create" onAction="#createPortfolio"
+                styleClass="btn, btn-primary"/>
     </HBox>
 
-    <TableView fx:id="pfTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="pfTable" VBox.vgrow="ALWAYS"
+               styleClass="table, table-hover">
         <columns>
             <TableColumn fx:id="colId"   text="ID" prefWidth="60"/>
-            <TableColumn fx:id="colName" text="Name" />
-            <TableColumn fx:id="colVal"  text="Total Value"/>
+            <TableColumn fx:id="colName" text="Name"/>
+            <TableColumn fx:id="colVal"  text="Total Value"/>
         </columns>
     </TableView>
 
-    <HBox spacing="10">
-        <Button text="Delete" onAction="#deleteSelected"/>
-        <Button text="Rename" onAction="#renamePortfolio"/>
-        <Button text="Open Trades" onAction="#openTrades"/>
-        <Button text="Export CSV" onAction="#exportCsv"/>
-        <Button text="Export PDF" onAction="#exportPdf"/>
+    <HBox spacing="8">
+        <Button text="Delete"       onAction="#deleteSelected" styleClass="btn, btn-danger"/>
+        <Button text="Rename"       onAction="#renamePortfolio" styleClass="btn, btn-outline-primary"/>
+        <Button text="Open Trades"  onAction="#openTrades"   styleClass="btn, btn-primary"/>
+        <Button text="Export CSV"   onAction="#exportCsv"    styleClass="btn, btn-outline-secondary"/>
+        <Button text="Export PDF"   onAction="#exportPdf"    styleClass="btn, btn-outline-secondary"/>
     </HBox>
 </VBox>

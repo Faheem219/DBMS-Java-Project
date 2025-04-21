@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.faheemtrading.controller.ProfileController"
+            stylesheets="@../css/profile.css">
+
+    <center>
+        <GridPane hgap="12" vgap="14">
+            <padding><Insets top="25" left="40" right="40" bottom="25"/></padding>
+
+            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="nameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="emailLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="pwdField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Contact Info:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="contactField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Annual Income:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="incomeField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Button text="Save" onAction="#save"
+                    GridPane.rowIndex="6" GridPane.columnIndex="1"
+                    GridPane.halignment="RIGHT"/>
+        </GridPane>
+    </center>
+</BorderPane>
