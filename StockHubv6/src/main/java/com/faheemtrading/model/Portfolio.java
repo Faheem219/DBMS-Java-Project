@@ -17,4 +17,8 @@ public class Portfolio {
     public LocalDate getCreationDate(){ return creationDate; }
     public double getTotalValue()     { return totalValue; }
     public void   setTotalValue(double v){ this.totalValue=v; }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

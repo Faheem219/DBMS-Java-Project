@@ -26,4 +26,11 @@ public class PortfolioService {
     public boolean executeTrade(AbstractTrade t){ return t.persist(); }
 
     public List<AbstractTrade> trades(int pfId){ return trDao.findByPortfolio(pfId); }
+
+    public boolean rename(int pfId, String newName) {
+        Portfolio p = pfDao.get(pfId).orElseThrow();
+        p.setName(newName);
+        return pfDao.update(p);
+    }
+
 }

@@ -108,4 +108,20 @@ public class PortfolioController {
         }catch(Exception e){e.printStackTrace();}
     }
 
+    @FXML private void renamePortfolio() {
+        Portfolio p = pfTable.getSelectionModel().getSelectedItem();
+        if (p == null) { AlertUtil.error("Select","Pick a portfolio first"); return; }
+
+        TextInputDialog dlg = new TextInputDialog(p.getName());
+        dlg.setHeaderText("Rename portfolio");
+        dlg.setContentText("New name:");
+        dlg.showAndWait().ifPresent(newName -> {
+            if (newName.isBlank()) return;
+            if (svc.rename(p.getPortfolioId(), newName)) {
+                AlertUtil.info("Saved","Portfolio renamed");
+                refresh();
+            }
+        });
+    }
+
 }

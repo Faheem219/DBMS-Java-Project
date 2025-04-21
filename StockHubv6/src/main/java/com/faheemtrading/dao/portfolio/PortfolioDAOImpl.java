@@ -48,7 +48,16 @@ public class PortfolioDAOImpl implements PortfolioDAO {
         }catch(Exception e){e.printStackTrace();return false;}
     }
 
-    @Override public boolean update(Portfolio p){ return false; }
+    @Override
+    public boolean update(Portfolio p) {          // *name only* for now
+        String sql = "UPDATE Portfolio SET Portfolio_Name=? WHERE Portfolio_ID=?";
+        try (PreparedStatement ps = DBUtil.getConnection().prepareStatement(sql)) {
+            ps.setString(1, p.getName());
+            ps.setInt   (2, p.getPortfolioId());
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) { e.printStackTrace(); return false; }
+    }
+
     @Override public boolean delete(Integer id){
         try(PreparedStatement ps=DBUtil.getConnection().prepareStatement(
                 "DELETE FROM Portfolio WHERE Portfolio_ID=?")){

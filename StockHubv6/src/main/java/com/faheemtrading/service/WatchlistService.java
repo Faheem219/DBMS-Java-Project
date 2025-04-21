@@ -12,9 +12,9 @@ public class WatchlistService {
 
     public List<Watchlist> userWatchlists(int uid){ return dao.findByUser(uid); }
 
-    public boolean create(String name,String notes,int stockId){
+    public boolean create(String name,String notes,int stockId, int userId){
         int id=(int)(System.currentTimeMillis()%1_000_000);
-        Watchlist w=new Watchlist(id,name,notes, LocalDate.now(),stockId,"");
+        Watchlist w=new Watchlist(id,name,notes, LocalDate.now(),stockId,"", userId);
         return dao.insert(w);
     }
     public boolean delete(int wid){ return dao.delete(wid); }
